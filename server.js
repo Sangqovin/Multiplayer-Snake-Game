@@ -11,6 +11,8 @@ io.on("connection", (client) => {
   client.on("newGame", handleNewGame);
   client.on("joinGame", handleJoinGame);
 
+
+
   function handleJoinGame(roomName) {
     const room = io.sockets.adapter.rooms[roomName];
 
@@ -95,5 +97,6 @@ function emitGameState(room, gameState) {
 function emitGameOver(room, winner) {
   io.sockets.in(room).emit("gameOver", JSON.stringify({ winner }));
 }
+
 
 io.listen(3000);
